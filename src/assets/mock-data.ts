@@ -1,4 +1,4 @@
-import { Country } from '../app/country';
+import { Country } from '../app/model/country.model';
 
 // https://restcountries.com/v3.1/all?fields=name,capital,currencies,borders,population
 
