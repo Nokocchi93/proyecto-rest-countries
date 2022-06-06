@@ -1,3 +1,5 @@
 <h1>Countries</h1>
+<input id="search" type="text" [formControl]="search" />
+<p>{{ search.value }}</p>
 <app-countries-grid></app-countries-grid>
 <router-outlet></router-outlet>

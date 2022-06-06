@@ -7,9 +7,18 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class CountryService {
+  private countries: Country[];
+
   constructor() {}
 
+  // fetchCountries(): void {
+  //   this.countries = COUNTRIES;
+  // }
+
   getCountries(): Observable<Country[]> {
+    // this.countries = COUNTRIES;
+    // console.log(this.countries);
+    // return [...this.countries];
     return of(COUNTRIES);
   }
 }
