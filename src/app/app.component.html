@@ -1,5 +1,9 @@
 <h1>Countries</h1>
-<input id="search" type="text" [formControl]="search" />
-<p>{{ search.value }}</p>
+<input id="search" type="text" [formControl]="searchInput" />
+<select [formControl]="majorRegionsSelect">
+  <option selected value="">All regions</option>
+  <option *ngFor="let region of majorRegions" value="{{ region }}">{{ region }}</option>
+</select>
+<p>{{ searchInput.value }}</p>
 <app-countries-grid></app-countries-grid>
 <router-outlet></router-outlet>

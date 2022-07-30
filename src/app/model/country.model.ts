@@ -15,3 +15,11 @@ export interface Country {
   region?: string;
   subregion?: string;
 }
+
+export enum MajorRegions {
+  Africa = 'Africa',
+  Americas = 'Americas',
+  Asia = 'Asia',
+  Europe = 'Europe',
+  Oceania = 'Oceania',
+}

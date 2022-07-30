@@ -23,8 +23,14 @@ export class CountriesGridComponent implements OnInit, OnDestroy {
     this.subscription = combineLatest([
       this.countryService.getCountries(),
       this.filterService.nameSearch,
-    ]).subscribe(([countries, name]) => {
-      this.countries = countries.filter((c) => this.filterByName(c, name));
+      this.filterService.majorRegionSelect,
+    ]).subscribe(([countries, name, majorRegion]) => {
+      console.log(countries);
+      console.log(name);
+      console.log(majorRegion);
+      this.countries = countries
+        .filter((c) => this.filterByName(c, name))
+        .filter((c) => this.filterByMajorRegion(c, majorRegion));
     });
   }
 
@@ -35,6 +41,10 @@ export class CountriesGridComponent implements OnInit, OnDestroy {
     //   country.capital[0].toLowerCase().includes(name.toLowerCase())
     // );
     return country.name.common.toLowerCase().includes(name.toLowerCase());
+  }
+
+  filterByMajorRegion(country: Country, region: string): boolean {
+    return region ? country.region === region : true;
   }
 
   ngOnDestroy(): void {
