@@ -7,4 +7,5 @@ import { BehaviorSubject } from 'rxjs';
 export class FilterService {
   nameSearch = new BehaviorSubject<string>('');
   majorRegionSelect = new BehaviorSubject<string>('');
+  orderSelect = new BehaviorSubject<string>('');
 }

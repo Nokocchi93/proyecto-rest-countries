@@ -21,4 +21,9 @@ export class CountryService {
     // return [...this.countries];
     return of(COUNTRIES);
   }
+
+  getCountry(name: string): Observable<Country> {
+    const country = COUNTRIES.find(c => c.name.common === name);
+    return of(country);
+  }
 }

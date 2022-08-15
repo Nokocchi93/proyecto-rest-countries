@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   ];
   searchInput = new FormControl('');
   majorRegionsSelect = new FormControl('');
+  orderSelect = new FormControl('');
 
   constructor(private filterService: FilterService) {}
 
@@ -31,6 +32,10 @@ export class AppComponent implements OnInit {
 
     this.majorRegionsSelect.valueChanges.subscribe((value) =>
       this.filterService.majorRegionSelect.next(value)
+    );
+
+    this.orderSelect.valueChanges.subscribe((value) =>
+      this.filterService.orderSelect.next(value)
     );
   }
 }

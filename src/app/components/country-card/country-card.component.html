@@ -1,11 +1,11 @@
-<div>
-  <img
-    [src]="country.flags.png"
-    [alt]="country.name.common"
-    width="320"
-    height="170"
-  />
-  <span>{{ country.name.common }}</span>
-  <span>Capital: {{ country.capital[0] }} </span>
-  <span>Population: {{ country.population }} </span>
+<div routerLink="/details/{{ country.name.common }}">
+    <img
+      [src]="country.flags.png"
+      [alt]="country.name.common"
+      width="320"
+      height="170"
+    />
+    <span>{{ country.name.common }}</span>
+    <span>Capital: {{ country.capital[0] }} </span>
+    <span>Population: {{ country.population }} </span>
 </div>
