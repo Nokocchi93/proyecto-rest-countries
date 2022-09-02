@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  --text-color: black;
+  --background-color: white;
+  --border-color: black;
+}
+
+body.dark-theme {
+  --text-color: white;
+  --background-color: black;
+  --border-color: white;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

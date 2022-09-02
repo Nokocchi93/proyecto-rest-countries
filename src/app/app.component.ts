@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-
-import { FilterService } from './services/filter.service';
-
-import { MajorRegions } from './model/country.model';
+import { Observable } from 'rxjs';
+import { Country } from './model/country.model';
+import { CountryService } from './services/country.service';
 
 @Component({
   selector: 'app-root',
@@ -12,30 +10,11 @@ import { MajorRegions } from './model/country.model';
 })
 export class AppComponent implements OnInit {
   title = 'proyecto-rest-countries';
-  majorRegions = [
-    MajorRegions.Africa,
-    MajorRegions.Americas,
-    MajorRegions.Asia,
-    MajorRegions.Europe,
-    MajorRegions.Oceania,
-  ];
-  searchInput = new FormControl('');
-  majorRegionsSelect = new FormControl('');
-  orderSelect = new FormControl('');
+  countries$: Observable<Country[]>;
 
-  constructor(private filterService: FilterService) {}
+  constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {
-    this.searchInput.valueChanges.subscribe((value) =>
-      this.filterService.nameSearch.next(value)
-    );
-
-    this.majorRegionsSelect.valueChanges.subscribe((value) =>
-      this.filterService.majorRegionSelect.next(value)
-    );
-
-    this.orderSelect.valueChanges.subscribe((value) =>
-      this.filterService.orderSelect.next(value)
-    );
+    this.countries$ = this.countryService.fetchCountries();
   }
 }

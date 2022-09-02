@@ -1,0 +1,28 @@
+<div class="container">
+  <div>
+    <label for="search">Search by country name:</label>
+    <input id="search" name="search" type="text" [formControl]="searchInput" />
+  </div>
+
+  <div>
+    <label for="major-region-sel">Search by major region:</label>
+    <select name="major-regin-sel" [formControl]="majorRegionsSelect">
+      <option selected value="">All regions</option>
+      <option *ngFor="let region of majorRegions" value="{{ region }}">{{ region }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="order-sel">Sort countries:</label>
+    <select name="order-sel" [formControl]="orderSelect">
+      <option selected value="">Default order</option>
+      <option value="AZ">From A to Z</option>
+      <option value="ZA">From Z to A</option>
+      <option value="LtG">Lower to Greater pop</option>
+      <option value="GtL">Greater to Lower pop</option>
+    </select>
+  </div>
+
+  <button (click)="toggleTheme()">Toggle theme</button>
+</div>
+

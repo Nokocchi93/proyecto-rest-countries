@@ -1,29 +1,30 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Country } from '../model/country.model';
-import { COUNTRIES } from 'src/assets/mock-data';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CountryService {
-  private countries: Country[];
+  private restCountriesUrl = 'https://restcountries.com/v3.1';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  // fetchCountries(): void {
-  //   this.countries = COUNTRIES;
-  // }
+  fetchCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>(`${this.restCountriesUrl}/all`);
+  }
 
   getCountries(): Observable<Country[]> {
-    // this.countries = COUNTRIES;
-    // console.log(this.countries);
-    // return [...this.countries];
-    return of(COUNTRIES);
+    return this.http.get<Country[]>(`${this.restCountriesUrl}/all`);
   }
 
   getCountry(name: string): Observable<Country> {
-    const country = COUNTRIES.find(c => c.name.common === name);
-    return of(country);
+    return this.http.get<Country>(`${this.restCountriesUrl}/name/${name}?fullText=true`);
+  }
+
+  getCountryByCode(code: string): Observable<Country> {
+    return this.http.get<Country>(`${this.restCountriesUrl}/alpha/${code}`);
   }
 }

@@ -14,6 +14,9 @@ export interface Country {
   };
   region?: string;
   subregion?: string;
+  independent?: boolean;
+  unMember?: boolean;
+  area?: number;
 }
 
 export enum MajorRegions {

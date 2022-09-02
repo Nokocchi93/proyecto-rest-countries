@@ -16,7 +16,7 @@ export class CountriesGridComponent implements OnInit, OnDestroy {
   constructor(
     private countryService: CountryService,
     private filterService: FilterService
-  ) {}
+    ) {}
 
   ngOnInit(): void {
     this.subscription = combineLatest([
@@ -81,6 +81,9 @@ export class CountriesGridComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.filterService.nameSearch.next('');
+    this.filterService.majorRegionSelect.next('');
+    this.filterService.orderSelect.next('');
     this.subscription.unsubscribe();
   }
 }

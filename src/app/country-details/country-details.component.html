@@ -1,17 +1,27 @@
 <div *ngIf="country">
-  <button type="button" (click)="goBack()">&larr; back</button>
+  <button class="back-btn" type="button" routerLink="/">&larr; back</button>
   <div class="details">
     <img
-        [src]="country.flags.png"
-        [alt]="country.name.common"
-        width="320"
-        height="170"
-      />
+    [src]="country[0].flags.png"
+    [alt]="country[0].name.common"
+    width="320"
+    height="170"
+    />
     <div class="info">
-      <h2>{{ country.name.common }}</h2>
-      <p>Capital: {{ country.capital[0] }}</p>
-      <p>Population: {{ country.population }}</p>
-      <p *ngFor="let country of country.borders">Border countries: {{ country }}</p>
+      <h2>{{ country[0].name.common | uppercase }}</h2>
+      <p><strong>Capital: </strong>{{ country[0].capital[0] }}</p>
+      <p><strong>Population: </strong>{{ country[0].population }}</p>
+      <p><strong>Region: </strong>{{ country[0].region }}</p>
+      <p><strong>Subregion: </strong>{{ country[0].subregion }}</p>
+      <p><strong>Is independent: </strong>{{ country[0].independent ? 'yes' : 'no' }}</p>
+      <p><strong>Is UN member: </strong>{{ country[0].unMember ? 'yes' : 'no' }}</p>
+      <p><strong>Area: </strong>{{ country[0].area }}km<sup>2</sup></p>
+    </div>
+  </div>
+  <div class="border-countries" *ngIf="borderCountries.length > 0">
+    <h2>Border countries</h2>
+    <div class="card-container">
+      <app-country-card *ngFor="let country of borderCountries" [country]="country"></app-country-card>
     </div>
   </div>
 </div>

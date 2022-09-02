@@ -1,4 +1,5 @@
-<app-country-card
-  *ngFor="let country of countries"
-  [country]="country"
-></app-country-card>
+<app-search-filters></app-search-filters>
+<div class="card-container">
+  <app-country-card *ngFor="let country of countries" [country]="country"></app-country-card>
+</div>
+

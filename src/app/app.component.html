@@ -1,14 +1,4 @@
-<h1>Countries</h1>
-<input id="search" type="text" [formControl]="searchInput" />
-<select [formControl]="majorRegionsSelect">
-  <option selected value="">All regions</option>
-  <option *ngFor="let region of majorRegions" value="{{ region }}">{{ region }}</option>
-</select>
-<select [formControl]="orderSelect">
-  <option selected value="">Default order</option>
-  <option value="AZ">From A to Z</option>
-  <option value="ZA">From Z to A</option>
-  <option value="LtG">Lower to Greater pop</option>
-  <option value="GtL">Greater to Lower pop</option>
-</select>
-<router-outlet></router-outlet>
+<h1 class="title">COUNTRIES APP</h1>
+<div *ngIf="countries$ | async as countries">
+  <router-outlet></router-outlet>
+</div>

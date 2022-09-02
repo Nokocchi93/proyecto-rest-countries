@@ -5,7 +5,9 @@
       width="320"
       height="170"
     />
-    <span>{{ country.name.common }}</span>
-    <span>Capital: {{ country.capital[0] }} </span>
-    <span>Population: {{ country.population }} </span>
+    <div class="info">
+      <strong>{{ country.name.common | uppercase }}</strong>
+      <span *ngIf="country.capital"><strong>Capital: </strong>{{ country.capital[0] }}</span>
+      <span><strong>Population: </strong>{{ country.population }}</span>
+    </div>
 </div>
