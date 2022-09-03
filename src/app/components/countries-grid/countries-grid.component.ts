@@ -32,12 +32,7 @@ export class CountriesGridComponent implements OnInit, OnDestroy {
     });
   }
 
-  // This method filters by country or by capital name
   filterByName(country: Country, name: string): boolean {
-    // return (
-    //   country.name.common.toLowerCase().includes(name.toLowerCase()) ||
-    //   country.capital[0].toLowerCase().includes(name.toLowerCase())
-    // );
     return country.name.common.toLowerCase().includes(name.toLowerCase());
   }
 

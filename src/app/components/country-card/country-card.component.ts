@@ -6,10 +6,6 @@ import { Country } from '../../model/country.model';
   templateUrl: './country-card.component.html',
   styleUrls: ['./country-card.component.scss'],
 })
-export class CountryCardComponent implements OnInit {
+export class CountryCardComponent {
   @Input() country: Country;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }
